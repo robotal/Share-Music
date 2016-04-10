@@ -7,9 +7,9 @@ block content
 	div
 		#divLogInForm(style='width:40%')
 			form#formLogin(name='login', action='/login', method='post')
-				input(type='text', name = 'loginUsername', placeholder='Username')
+				input(type='text', name = 'loginUsername', placeholder='Username', required)
 				br
-				input(type='password', name='loginPassword', placeholder='Password')
+				input(type='password', name='loginPassword', placeholder='Password', required)
 				br
 				if failed === 'true'
 					p
@@ -21,17 +21,20 @@ block content
 		div.vertical_line(style='width:19%; height:80%')
 		#divRegisterForm(style='width:40%')
 			form(name='register', action='/register', method='post')
-				input(type='text', name = 'registerFirstName', placeholder='First name')
+				input(type='text', name = 'registerFirstName', placeholder='First name', required)
 				br
-				input(type='text', name = 'registerLastName', placeholder='Last name')
+				input(type='text', name = 'registerLastName', placeholder='Last name', required)
 				br
-				input(type='text', name = 'registerUserName', placeholder='Username')
+				input(type='text', name = 'registerUserName', placeholder='Username', required)
 				br
-				input(type='text', name = 'registerEmail', placeholder='Email')
+				input(type='email', name = 'registerEmail', placeholder='Email', required)
 				br
-				input(type='password', name='registerPassword', placeholder='Password')
+				input(type='password', name='registerPassword', placeholder='Password', required)
 				br
-				input(type='password', name='registerConfirm', placeholder='Confirm Password')
+				input(type='password', name='registerConfirm', placeholder='Confirm Password', required)
 				br
+				if registerError
+					p
+						font(color="red")= registerError 
 				input(type='submit', name='registerButton', value='Register New Account')
 				br

@@ -7,10 +7,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Login'});
 });
 
-router.get('/helloworld', function(req, res) {
-	res.render('helloworld', {title: 'Hello World!'});
-});
-
+/*
+ * EXAMPLE OF SENDING IN MULTIPLE DB ENTRIES INTO JADE
+ *  
 router.get('/userlist', function(req,res) {
 	var db = req.db;
 	var collection = db.get('usercollection');
@@ -20,6 +19,7 @@ router.get('/userlist', function(req,res) {
 		});
 	});
 });
+*/
 
 /* Login a user */
 router.post('/login', function(req,res){
@@ -31,20 +31,18 @@ router.post('/login', function(req,res){
 		
 	var collection = db.get('usercollection').find({'username': {$eq : userName} },{},function(e,docs){
 		
-		var dbHash=docs[0].passwordHash;
-		
-		if(dbHash === hash){
+		if(docs.length == 0 || docs[0].passwordHash !== hash){
 			
-			res.render('loggedin', {title: 'Logged in Succesfully'});
-			
+			res.render('index', { title: 'Login', failed: 'true' });
 		}
 		else{
 			
-			res.render('index', { title: 'Login', failed: 'true' });
+			res.render('loggedin', {title: 'Logged in Succesfully'});
 		}
 	});	
 });
 
+/* Register new user */
 router.post('/register', function(req,res){
 	var db = req.db;
 	
@@ -77,6 +75,21 @@ router.post('/register', function(req,res){
 			else{
 				
 				//write to the database
+				
+				var passwordHash = crypto.createHmac("sha1",'I am a beautiful gopherA98DF23').update(password).digest('hex');
+				
+				var newUser= { 
+						'firstName' : firstname, 
+						'lastName' : lastname,
+						'username' : username, 
+						'email' : email, 
+						'passwordHash' : passwordHash};
+				
+				db.get('usercollection').insert(newUser);
+				
+				
+				res.render('registered', {title: 'Registered Succesfully'});
+				
 			}
 		});
 		
@@ -91,12 +104,7 @@ router.post('/register', function(req,res){
 	}	
 });
 
-
-/* Get new user page */
-router.get('/newuser', function(req,res){
-	res.render('newuser', {title: 'Add New User'});
-});
-
+/* EXAMPLE OF ADDING ENTRIES TO A DB 
 router.post('/adduser', function(req, res){
 	//Set our internal db var
 	var db = req.db;
@@ -123,4 +131,6 @@ router.post('/adduser', function(req, res){
 		}
 	});
 });
+*/
+
 module.exports = router;

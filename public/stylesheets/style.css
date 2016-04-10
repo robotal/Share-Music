@@ -1,0 +1,103 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+@charset "utf-8";
+/* CSS Document */
+
+h1{
+		background:#615BB9;
+		text-align:center;
+}
+
+#log_in_form input[type="text"]{
+	
+	width:80%;
+	padding:.8em;
+	font:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	font-size: 18px;
+	border-radius:10px;	
+	margin-left: auto;
+   	margin-right: auto;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+#register_form input[type="text"]{
+	width:80%;
+	padding:.8em;
+	font:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	font-size: 18px;
+	border-radius:10px;	
+	margin-left: auto;
+   	margin-right: auto;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+#log_in_form input[type="password"]{
+	width:80%;
+	padding:.8em;	
+	font-size: 18px;
+	border-radius:10px;
+	margin-left: auto;
+   	margin-right: auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+#register_form input[type="password"]{
+	width:80%;
+	padding:.8em;
+	font:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	font-size: 18px;
+	border-radius:10px;	
+	margin-left: auto;
+   	margin-right: auto;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+input[type="submit"]{
+	background-color:#00E312;	
+	text-align:center;
+	margin-left: auto;
+	margin-right: auto;
+	font-size:24px;
+	width:15em;
+	height:2em;
+	border-radius:15px;
+	font-family: 'Oswald', sans-serif;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+input:focus{
+	outline:none;
+}
+
+#banner{
+	position:relative;
+}
+#log_in_form{
+	text-align:center;
+	display:inline-block;
+	float:left;
+}
+#register_form{
+	text-align:center;
+	display:inline-block;
+	float:right;
+}
+.vertical_line{
+	/*position:absolute;*/
+	position:relative;
+	display:inline-block;
+	text-align:center;
+	left:10%;
+    top:15%;
+    bottom:10%;
+    border-left:3px solid #000000;
+}
+

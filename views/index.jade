@@ -11,8 +11,13 @@ block content
 				br
 				input(type='password', name='loginPassword', placeholder='Password')
 				br
+				if failed === 'true'
+					p
+						font(color="red") 
+							| Incorrect username or password entered.
 				input(type='submit', name='loginButton', value='Log In to Music-Share')
 				br
+			
 		div.vertical_line(style='width:19%; height:80%')
 		#divRegisterForm(style='width:40%')
 			form(name='register', action='/register', method='post')
